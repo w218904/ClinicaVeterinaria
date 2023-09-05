@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.clinicaveterinaria.model;
 
 /**
@@ -9,58 +5,72 @@ package com.mycompany.clinicaveterinaria.model;
  * @author w218904
  */
 public class Cliente {
-    private String nomeCliente;
+    private int id;
+    private String nome;
     private String endereco;
-    private String telefoneCliente;
-    private long cepCliente;
-    private String emailCliente;
+    private String cep;
+    private String email;
+    private String telefone;
 
-    public Cliente(String nomeCliente, String endereco, String telefoneCliente, long cepCliente, String emailCliente) {
-        this.nomeCliente = nomeCliente;
+    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
+        this.id = id;
+        this.nome = nome;
         this.endereco = endereco;
-        this.telefoneCliente = telefoneCliente;
-        this.cepCliente = cepCliente;
-        this.emailCliente = emailCliente;
+        this.telefone = cep;
+        this.cep = email;
+        this.email = telefone;
+    }
+    
+    public int getId() {
+        return id;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
 
     public String getEndereco() {
         return endereco;
     }
 
-    public String getTelefoneCliente() {
-        return telefoneCliente;
+    public String getCep() {
+        return cep;
     }
 
-    public long getCepCliente() {
-        return cepCliente;
+    public String getEmail() {
+        return email;
+    }
+    
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
-    }
-
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
-    public void setTelefoneCliente(String telefoneCliente) {
-        this.telefoneCliente = telefoneCliente;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public void setCepCliente(long cepCliente) {
-        this.cepCliente = cepCliente;
+    public void setEmail(String email){
+        if(!email.equals("")){
+            this.email = email;
+        }
     }
-
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
+    
+    @Override
+    public String toString() {        
+        String desc = "Cliente{" + "nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + '}';
+        return desc;
+    } 
     
 }
