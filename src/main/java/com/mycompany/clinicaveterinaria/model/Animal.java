@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.clinicaveterinaria.model;
 
 /**
@@ -9,38 +5,44 @@ package com.mycompany.clinicaveterinaria.model;
  * @author w218904
  */
 public class Animal {
-    private String nomeAnimal;
-    private int idadeAnimal;
-    private int sexoAnimal;
+    private int id;
+    private String nome;
+    private int idade;
+    private String sexo;
 
-    public Animal(String nomeAnimal, int idadeAnimal, int sexoAnimal) {
-        this.nomeAnimal = nomeAnimal;
-        this.idadeAnimal = idadeAnimal;
-        this.sexoAnimal = sexoAnimal;
+    public Animal(int id, String nome, int idade, String sexo) {
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+        this.sexo = sexo;
+    }
+    
+    public int getId() {
+        return id;
     }
 
-    public String getNomeAnimal() {
-        return nomeAnimal;
+    public String getNome() {
+        return nome;
     }
 
-    public int getIdadeAnimal() {
-        return idadeAnimal;
+    public int getIdade() {
+        return idade;
     }
 
-    public int getSexoAnimal() {
-        return sexoAnimal;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setNomeAnimal(String nomeAnimal) {
-        this.nomeAnimal = nomeAnimal;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setIdadeAnimal(int idadeAnimal) {
-        this.idadeAnimal = idadeAnimal;
+    public void setIdadeAnimal(int idade) {
+        this.idade = idade;
     }
 
-    public void setSexoAnimal(int sexoAnimal) {
-        this.sexoAnimal = sexoAnimal;
+    public void setSexoAnimal(String sexo) {
+        this.sexo = sexo;
     }
     
 }

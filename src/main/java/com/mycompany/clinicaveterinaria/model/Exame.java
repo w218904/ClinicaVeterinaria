@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.clinicaveterinaria.model;
 
 /**
@@ -9,12 +5,18 @@ package com.mycompany.clinicaveterinaria.model;
  * @author w218904
  */
 public class Exame {
+    private int id;
     private String descricaoExame;
 
-    public Exame(String descricaoExame) {
+    public Exame(int id, String descricaoExame) {
+        this.id = id;
         this.descricaoExame = descricaoExame;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public String getDescricaoExame() {
         return descricaoExame;
     }

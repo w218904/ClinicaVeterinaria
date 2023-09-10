@@ -10,20 +10,24 @@ package com.mycompany.clinicaveterinaria.model;
  */
 public class Especie {
     
-    private String nomeEspecie;
+    private int id;
+    private String nome;
 
-    public Especie(String nomeEspecie) {
-        this.nomeEspecie = nomeEspecie;
-    }
-
-    public String getNomeEspecie() {
-        return nomeEspecie;
-    }
-
-    public void setNomeEspecie(String nomeEspecie) {
-        this.nomeEspecie = nomeEspecie;
+    public Especie(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
     
-    
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
 }
