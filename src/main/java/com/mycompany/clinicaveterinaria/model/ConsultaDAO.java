@@ -31,7 +31,7 @@ public class ConsultaDAO extends DAO {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO consulta (dataConsulta, historico) VALUES (?,?)");
-            stmt.setDate(1, dataConsulta);
+            stmt.setDate(1, (java.sql.Date) dataConsulta);
             stmt.setString(2, historico);
             executeUpdate(stmt);
         } catch (SQLException ex) {
@@ -91,7 +91,7 @@ public class ConsultaDAO extends DAO {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("UPDATE consulta SET dataConsulta=? WHERE id=?");
-            stmt.setDate(1, consulta.getDataConsulta());
+            stmt.setDate(1, (java.sql.Date) consulta.getDataConsulta());
             stmt.setString(2, consulta.getHistorico());
             stmt.setInt(3, consulta.getId());
 

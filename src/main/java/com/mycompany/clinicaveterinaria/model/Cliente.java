@@ -72,5 +72,4 @@ public class Cliente {
         String desc = "Cliente{" + "nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + '}';
         return desc;
     } 
-    
 }

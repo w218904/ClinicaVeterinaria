@@ -9,12 +9,14 @@ public class Animal {
     private String nome;
     private int idade;
     private String sexo;
+    private Cliente cliente;
 
-    public Animal(int id, String nome, int idade, String sexo) {
+    public Animal(int id, String nome, int idade, String sexo, Cliente cliente) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
+        this.cliente = cliente;
     }
     
     public int getId() {
@@ -32,6 +34,10 @@ public class Animal {
     public String getSexo() {
         return sexo;
     }
+    
+    public Cliente getIdCliente() {
+        return cliente;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -44,5 +50,4 @@ public class Animal {
     public void setSexoAnimal(String sexo) {
         this.sexo = sexo;
     }
-    
 }
