@@ -1,6 +1,5 @@
 package com.mycompany.clinicaveterinaria.model;
 
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,7 +43,7 @@ public class AnimalDAO extends DAO {
     private Animal buildObject(ResultSet rs) {
         Animal animal = null;
         try {
-            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getString("idade"), rs.getString("sexo"), rs.getString("cliente"));
+            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("idade"), rs.getString("sexo"), rs.getString("cliente"));
         } catch (SQLException e) {
             System.out.println("Exception: " + e.getMessage());
         }
@@ -65,4 +64,52 @@ public class AnimalDAO extends DAO {
         return animais;
     }
     
+    // RetrieveAll
+    public List retrieveAll() {
+        return this.retrieve("SELECT * FROM animal");
+    }
+    
+    // RetrieveLast
+    public List retrieveLast(){
+        return this.retrieve("SELECT * FROM animal WHERE id = " + lastId("animal","id"));
+    }
+
+    // RetrieveById
+    public Animal retrieveById(int id) {
+        List<Animal> animais = this.retrieve("SELECT * FROM animal WHERE id = " + id);
+        return (animais.isEmpty()?null:animais.get(0));
+    }
+
+    // RetrieveBySimilarName
+    public List retrieveBySimilarName(String nome) {
+        return this.retrieve("SELECT * FROM animal WHERE nome LIKE '%" + nome + "%'");
+    }    
+        
+    // Updade
+    public void update(Animal animal) {
+        try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("UPDATE cliente SET nome=?, endereco=?, cep=?, email=?, telefone=? WHERE id=?");
+            stmt.setString(1, animal.getNome());
+            stmt.setInt(2, animal.getIdade());
+            stmt.setString(3, animal.getSexo());
+            stmt.setInt(4, animal.getId());
+            executeUpdate(stmt);
+        } catch (SQLException e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+    }
+    
+    // Delete   
+    public void delete(Animal animal) {
+        PreparedStatement stmt;
+        try {
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM animal WHERE id = ?");
+            stmt.setInt(1, animal.getId());
+            executeUpdate(stmt);
+        } catch (SQLException e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+    }
+
 }
