@@ -85,8 +85,8 @@ public abstract class DAO {
                     + "nome VARCHAR, \n"
                     + "anoNasc INTEGER, \n"
                     + "sexo VARCHAR, \n"
-                    + "id_especie INTEGER, \n"
-                    + "id_cliente INTEGER); \n");
+                    + "idEspecie INTEGER, \n"
+                    + "idCliente INTEGER); \n");
             executeUpdate(stmt);
             // Table species:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS especie( \n"
@@ -107,15 +107,15 @@ public abstract class DAO {
                     + "horario VARCHAR, \n"
                     + "comentario VARCHAR, \n"
                     + "id_animal INTEGER, \n"
-                    + "id_vet INTEGER, \n"
-                    + "id_tratamento INTEGER, \n"
+                    + "idVet INTEGER, \n"
+                    + "idTratamento INTEGER, \n"
                     + "terminado INTEGER); \n");
             executeUpdate(stmt);            
              // Table exam:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS exame( \n"
                     + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
                     + "nome VARCHAR, \n"
-                    + "id_consulta INTEGER); \n");
+                    + "idConsulta INTEGER); \n");
             executeUpdate(stmt);      
             return true;
         } catch (SQLException ex) {

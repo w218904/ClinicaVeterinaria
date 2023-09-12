@@ -26,14 +26,15 @@ public class AnimalDAO extends DAO {
     }
     
     //CRUD
-    public Animal create(String nome, String idade, String sexo, Cliente cliente) {
+    public Animal create(String nome, int dataNasc, String sexo, int idEspecie, int idCliente) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, idade, sexo, cliente) VALUES (?, ?, ?, ?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, anoNasc, sexo, idEspecie, idCliente) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, nome);
-            stmt.setString(2, idade);
+            stmt.setInt(2, dataNasc);
             stmt.setString(3, sexo);
-            stmt.setInt(4, cliente.getId());
+            stmt.setInt(4, idEspecie);
+            stmt.setInt(5, idCliente);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,7 +45,7 @@ public class AnimalDAO extends DAO {
     private Animal buildObject(ResultSet rs) {
         Animal animal = null;
         try {
-            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("idade"), rs.getString("sexo"), rs.getInt("idCliente"));
+            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("anoNasc"), rs.getString("sexo"), rs.getInt("idEspecie"), rs.getInt("idCliente"));
         } catch (SQLException e) {
             System.out.println("Exception: " + e.getMessage());
         }
@@ -90,11 +91,13 @@ public class AnimalDAO extends DAO {
     public void update(Animal animal) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE cliente SET nome=?, endereco=?, cep=?, email=?, telefone=? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET nome=?, anoNasc=?, sexo=?, idEspecie=?, idCliente=? WHERE id=?");
             stmt.setString(1, animal.getNome());
-            stmt.setInt(2, animal.getIdade());
+            stmt.setInt(2, animal.getDataNasc());
             stmt.setString(3, animal.getSexo());
             stmt.setInt(4, animal.getId());
+            stmt.setInt(5, animal.getIdEspecie());
+            stmt.setInt(6, animal.getIdCliente());
             executeUpdate(stmt);
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
