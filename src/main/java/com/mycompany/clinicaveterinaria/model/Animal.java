@@ -49,8 +49,9 @@ public class Animal {
         this.nome = nome;
     }
 
-    public void setDataNasc(int idade) {
+    public int setDataNasc(int dataNasc) {
         this.dataNasc = dataNasc;
+        return dataNasc;
     }
 
     public void setSexoAnimal(String sexo) {

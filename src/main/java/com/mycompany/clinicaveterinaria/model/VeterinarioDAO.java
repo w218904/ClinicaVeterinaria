@@ -29,7 +29,7 @@ public class VeterinarioDAO extends DAO {
     public Veterinario create(String nome, String email, String telefone) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO cliente (nome, email, telefone) VALUES (?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO vet (nome, email, telefone) VALUES (?,?,?)");
             stmt.setString(1, nome);
             stmt.setString(2, email);
             stmt.setString(3, telefone);
@@ -37,7 +37,7 @@ public class VeterinarioDAO extends DAO {
         } catch (SQLException ex) {
             Logger.getLogger(VeterinarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return this.retrieveById(lastId("veterinario","id"));
+        return this.retrieveById(lastId("vet","id"));
     }
     
 
@@ -67,30 +67,30 @@ public class VeterinarioDAO extends DAO {
     
     // RetrieveAll
     public List retrieveAll() {
-        return this.retrieve("SELECT * FROM veterinario");
+        return this.retrieve("SELECT * FROM vet");
     }
     
     // RetrieveLast
     public List retrieveLast(){
-        return this.retrieve("SELECT * FROM veterinario WHERE id = " + lastId("veterinario","id"));
+        return this.retrieve("SELECT * FROM vet WHERE id = " + lastId("vet","id"));
     }
 
     // RetrieveById
     public Veterinario retrieveById(int id) {
-        List<Veterinario> veterinarios = this.retrieve("SELECT * FROM veterinario WHERE id = " + id);
+        List<Veterinario> veterinarios = this.retrieve("SELECT * FROM vet WHERE id = " + id);
         return (veterinarios.isEmpty()?null:veterinarios.get(0));
     }
 
     // RetrieveBySimilarName
     public List retrieveBySimilarName(String nome) {
-        return this.retrieve("SELECT * FROM veterinario WHERE nome LIKE '%" + nome + "%'");
+        return this.retrieve("SELECT * FROM vet WHERE nome LIKE '%" + nome + "%'");
     }    
         
     // Updade
     public void update(Veterinario veterinario) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE cliente SET nome=?, endereco=?, cep=?, email=?, telefone=? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE vet SET nome=?, endereco=?, cep=?, email=?, telefone=? WHERE id=?");
             stmt.setString(1, veterinario.getNome());
             stmt.setString(2, veterinario.getEmail());
             stmt.setString(3, veterinario.getTelefone());

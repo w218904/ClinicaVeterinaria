@@ -83,7 +83,7 @@ public abstract class DAO {
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal( \n"
                     + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
                     + "nome VARCHAR, \n"
-                    + "anoNasc INTEGER, \n"
+                    + "datanasc INTEGER, \n"
                     + "sexo VARCHAR, \n"
                     + "idEspecie INTEGER, \n"
                     + "idCliente INTEGER); \n");

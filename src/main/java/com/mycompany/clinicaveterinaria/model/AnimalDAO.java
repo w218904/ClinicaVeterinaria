@@ -29,7 +29,7 @@ public class AnimalDAO extends DAO {
     public Animal create(String nome, int dataNasc, String sexo, int idEspecie, int idCliente) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, anoNasc, sexo, idEspecie, idCliente) VALUES (?, ?, ?, ?, ?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, datanasc, sexo, idEspecie, idCliente) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, nome);
             stmt.setInt(2, dataNasc);
             stmt.setString(3, sexo);
@@ -45,7 +45,7 @@ public class AnimalDAO extends DAO {
     private Animal buildObject(ResultSet rs) {
         Animal animal = null;
         try {
-            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("anoNasc"), rs.getString("sexo"), rs.getInt("idEspecie"), rs.getInt("idCliente"));
+            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("datanasc"), rs.getString("sexo"), rs.getInt("idEspecie"), rs.getInt("idCliente"));
         } catch (SQLException e) {
             System.out.println("Exception: " + e.getMessage());
         }
@@ -91,7 +91,7 @@ public class AnimalDAO extends DAO {
     public void update(Animal animal) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET nome=?, anoNasc=?, sexo=?, idEspecie=?, idCliente=? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET nome=?, dataNasc=?, sexo=?, idEspecie=?, idCliente=? WHERE id=?");
             stmt.setString(1, animal.getNome());
             stmt.setInt(2, animal.getDataNasc());
             stmt.setString(3, animal.getSexo());

@@ -44,5 +44,5 @@ public class Veterinario {
     public void setTelefoneVeterinario(String telefone) {
         this.telefone = telefone;
     }
-    
+
 }
